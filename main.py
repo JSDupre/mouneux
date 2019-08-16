@@ -75,7 +75,7 @@ def getHandsValues(hands_list):
 
 
 games_point_distrib=[]
-for i in range(1000):
+for i in range(100000):
     hands_list=ShuffleAndGiveCards(linearized_deck)
     games_point_distrib.append(getHandsValues(hands_list))
 
@@ -114,10 +114,10 @@ prop_of_hands_beaten=np.empty((1,len(possible_values)))
 for k in range(len(possible_values)):
     partial_sum=0
     for j in range(k):
-        partial_sum+=count_each_values[0][j]
+        partial_sum+=count_each_values[0][j+1]
     prop_of_hands_beaten[0][k]=partial_sum/total_size
 
-plt.bar(prop_of_hands_beaten[0], bottom=possible_values)
+plt.bar(possible_values, prop_of_hands_beaten[0], width=0.8,align='center', data=None)
 plt.show()
     
 
