@@ -119,5 +119,23 @@ for k in range(len(possible_values)):
 
 plt.bar(possible_values, prop_of_hands_beaten[0], width=0.8,align='center', data=None)
 plt.show()
+
+possible_values2=[7,8,10,11,12,13,15,17,18,19,20,21,22,23,24,25]
+
+total_size2=len(max_point_each_game_2_cards)
+count_each_values2=np.zeros((1,len(possible_values2)))
+for j in range(len(possible_values2)):
+    count_each_values2[0][j]=max_point_each_game_2_cards.count(possible_values2[j])
+
+
+prop_of_hands_beaten2=np.empty((1,len(possible_values2)))
+for k in range(len(possible_values2)):
+    partial_sum2=0
+    for j in range(k):
+        partial_sum2+=count_each_values2[0][j+1]
+    prop_of_hands_beaten2[0][k]=partial_sum2/total_size2
+
+plt.bar(possible_values2, prop_of_hands_beaten2[0], width=0.8,align='center', data=None)
+plt.show()
     
 
